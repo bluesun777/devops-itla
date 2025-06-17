@@ -1,0 +1,21 @@
+name: Notificar a ntfy.sh al subir a main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Ejecutar Hola Mundo
+        run: node hola.js
+
+      - name: Enviar notificación a ntfy.sh
+        run: |
+          curl -d "🚀 Se ha realizado un push a la rama main del proyecto DevOps-ITLA." ntfy.sh/devops-itla
